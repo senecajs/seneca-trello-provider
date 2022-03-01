@@ -53,6 +53,7 @@
     "seneca-promisify": ">=2"
   },
   "dependencies": {
-    "@octokit/rest": "^18.12.0"
+    "@octokit/rest": "^18.12.0",
+    "trello": "^0.11.0"
   }
 }
