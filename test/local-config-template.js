@@ -1,3 +1,6 @@
 module.exports = {
-  key: '<API-KEY>'
+    key: '<API-KEY>',
+    token: '<USER-TOKEN>',
+    boardId: '<BOARD-ID>',
+    cardId: '<CARD-ID>'
 }
