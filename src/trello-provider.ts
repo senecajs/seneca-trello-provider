@@ -65,11 +65,13 @@ function TrelloProvider(this: any, _options: any) {
 
 
     seneca.prepare(async function (this: any) {
-        let out = await this.post('sys:provider,get:key,provider:trello,key:api')
-        if (!out.value[0] || !out.value[1]) {
-            this.fail('api-key-missing/user-key-missing ')
+        let apiKey = await this.post('sys:provider,get:key,provider:trello,key:api')
+        let userToken = await this.post('sys:provider,get:key,provider:trello,key:user')
+        let inTestMode = await this.post('sys:provider,get:key,provider:trello,key:test')
+        if ((!apiKey.value || !userToken.value) && !inTestMode.value) {
+            this.fail('api-key-missing/user-key-missing')
         }
-        trello = new Trello(out.value[0], out.value[1])
+        trello = new Trello(apiKey.value, userToken.value)
     })
 
 
