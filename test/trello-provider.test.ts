@@ -10,9 +10,10 @@ const SenecaMsgTest = require('seneca-msg-test')
 const TrelloProviderMessages = require('./trello-provider.messages').default
 
 const CONFIG: any = {}
-
+let missingKeys = true
 if (Fs.existsSync(__dirname + '/local-config.js')) {
     Object.assign(CONFIG, require(__dirname + '/local-config.js'))
+    missingKeys = false
 }
 
 jest.setTimeout(10000)
@@ -28,7 +29,13 @@ describe('trello-provider', () => {
                     trello: {
                         keys: {
                             api: {
-                                value: [CONFIG.key, CONFIG.token],
+                                value: CONFIG.key,
+                            },
+                            user: {
+                                value: CONFIG.token
+                            },
+                            test: {
+                                value: missingKeys
                             }
                         }
                     }
@@ -48,7 +55,13 @@ describe('trello-provider', () => {
                     trello: {
                         keys: {
                             api: {
-                                value: [CONFIG.key, CONFIG.token],
+                                value: CONFIG.key,
+                            },
+                            user: {
+                                value: CONFIG.token
+                            },
+                            test: {
+                                value: missingKeys
                             }
                         }
                     }
@@ -60,63 +73,76 @@ describe('trello-provider', () => {
 
 
     test('native', async () => {
-        const seneca = Seneca({legacy: false})
-            .test()
-            .use('promisify')
-            .use('provider', {
-                provider: {
-                    trello: {
-                        keys: {
-                            api: {
-                                value: [CONFIG.key, CONFIG.token],
+        if (!missingKeys) {
+            const seneca = Seneca({legacy: false})
+                .test()
+                .use('promisify')
+                .use('provider', {
+                    provider: {
+                        trello: {
+                            keys: {
+                                api: {
+                                    value: CONFIG.key,
+                                },
+                                user: {
+                                    value: CONFIG.token
+                                },
                             }
                         }
                     }
-                }
-            })
-            .use(TrelloProvider)
-        await seneca.ready()
+                })
+                .use(TrelloProvider)
+            await seneca.ready()
 
-        let native = seneca.export('TrelloProvider/native')
-        expect(native().trello).toBeDefined()
+            let native = seneca.export('TrelloProvider/native')
+            expect(native().trello).toBeDefined()
+        }
     })
 
 
     test('entity-load', async () => {
-        const seneca = Seneca({legacy: false})
-            .test()
-            .use('promisify')
-            .use('entity')
-            .use('provider', {
-                provider: {
-                    trello: {
-                        keys: {
-                            api: {
-                                value: [CONFIG.key, CONFIG.token],
+        if (!missingKeys) {
+            const seneca = Seneca({legacy: false})
+                .test()
+                .use('promisify')
+                .use('entity')
+                .use('provider', {
+                    provider: {
+                        trello: {
+                            keys: {
+                                api: {
+                                    value: CONFIG.key,
+                                },
+                                user: {
+                                    value: CONFIG.token
+                                },
                             }
                         }
                     }
-                }
-            })
-            .use(TrelloProvider)
-        const cardAndBoardId = CONFIG.boardId + "/" + CONFIG.cardId
-        let card = await seneca.entity('provider/trello/card')
-            .load$(cardAndBoardId)
-        await (SenecaMsgTest(seneca, TrelloProviderMessages)())
-        expect(card).toBeDefined()
-        expect(card.entity$).toBe('provider/trello/card')
+                })
+                .use(TrelloProvider)
+            const cardAndBoardId = CONFIG.boardId + "/" + CONFIG.cardId
+            let card = await seneca.entity('provider/trello/card')
+                .load$(cardAndBoardId)
+            await (SenecaMsgTest(seneca, TrelloProviderMessages)())
+            expect(card).toBeDefined()
+            expect(card.entity$).toBe('provider/trello/card')
+        }
     })
 
 
     test('entity-save', async () => {
-        if (CONFIG.key && CONFIG.token) {
+        if (!missingKeys) {
             const provider_options = {
                 provider: {
                     trello: {
                         keys: {
                             api: {
-                                value: [CONFIG.key, CONFIG.token],
-                            }
+                                value: CONFIG.key,
+                            },
+                            user: {
+                                value: CONFIG.token
+                            },
                         }
                     }
                 }
