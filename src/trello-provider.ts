@@ -41,7 +41,7 @@ function TrelloProvider(this: any, _options: any) {
         let res = await trello.getCard(boardId, cardId)
 
         if (res.id) {
-            res.id = boardId + '/' + cardId
+            res.id = cardId
             ent = this.make$(ZONE_BASE + 'card').data$(res)
         }
         return ent
