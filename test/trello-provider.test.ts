@@ -126,6 +126,7 @@ describe('trello-provider', () => {
                 .load$(cardAndBoardId)
             await (SenecaMsgTest(seneca, TrelloProviderMessages)())
             expect(card).toBeDefined()
+            expect(card.id).toEqual(CONFIG.cardId)
             expect(card.entity$).toBe('provider/trello/card')
         }
     })
