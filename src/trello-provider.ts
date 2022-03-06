@@ -56,7 +56,7 @@ function TrelloProvider(this: any, _options: any) {
             value)
 
         if (res.id) {
-            res.id = cardId + '/' + field + '/' + value
+            res.id = cardId
             ent = this.make$(ZONE_BASE + 'card').data$(res)
         }
 
