@@ -4,15 +4,15 @@
 const docs = {
 
   get_info: {
-    desc: 'Get information about the provider.',
+    desc: 'Get information about the card.',
   },
 
-  load_repo: {
-    desc: 'Load GitHub repository data into an entity.',
+  load_card: {
+    desc: 'Load Trello card data into an entity.',
   },
 
   save_repo: {
-    desc: 'Update GitHub repository data from an entity.',
+    desc: 'Update Trello card data from an entity.',
   },
 
 }
