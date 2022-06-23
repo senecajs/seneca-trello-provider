@@ -7,14 +7,6 @@ const docs = {
     desc: 'Get information about the card.',
   },
 
-  load_card: {
-    desc: 'Load Trello card data into an entity.',
-  },
-
-  save_repo: {
-    desc: 'Update Trello card data from an entity.',
-  },
-
 }
 
 export default docs
