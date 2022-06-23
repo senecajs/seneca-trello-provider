@@ -1,6 +1,6 @@
 {
   "name": "@seneca/trello-provider",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "dist/trello-provider.js",
   "type": "commonjs",
   "types": "dist/trello-provider.d.ts",
@@ -46,7 +46,7 @@
     "seneca": ">=3",
     "seneca-entity": ">=17",
     "seneca-promisify": ">=2",
-    "@seneca/provider": ">=0.4",
+    "@seneca/provider": ">=0.5",
     "@seneca/env": ">=0.2"
   },
   "devDependencies": {
