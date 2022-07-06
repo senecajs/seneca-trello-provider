@@ -15,7 +15,7 @@ module.exports = {
         name: 'trello',
         version: Pkg.version,
         sdk: {
-          name: 'trello-node',
+          name: 'trello',
           version: Pkg.dependencies['trello'],
         }
       },

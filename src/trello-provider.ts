@@ -23,7 +23,7 @@ function TrelloProvider(this: any, _options: TrelloProviderOptions) {
       name: 'trello',
       version: Pkg.version,
       sdk: {
-        name: 'trello-node',
+        name: 'trello',
         version: Pkg.dependencies['trello'],
       }
     }
@@ -106,7 +106,8 @@ function TrelloProvider(this: any, _options: TrelloProviderOptions) {
   })
 
   seneca.prepare(async function(this: any) {
-    // TODO: define get:keys to get all the keys?
+    // TODO: define sys:provider,get:keys to get all the keys?
+
     let apikey =
       await this.post('sys:provider,get:key,provider:trello,key:apikey')
     let usertoken =
@@ -121,42 +122,6 @@ function TrelloProvider(this: any, _options: TrelloProviderOptions) {
       sdk: () => this.shared.sdk
     }
   }
-
-
-  /*
-
-  async function load_card(this: any, msg: any) {
-    let ent: any = null
-
-    let q: any = msg.q
-    let [boardId, cardId]: [string, string] = q.id.split('/')
-
-    let res = await trello.getCard(boardId, cardId)
-
-    if (res.id) {
-      res.id = cardId
-      ent = this.make$(ZONE_BASE + 'card').data$(res)
-    }
-    return ent
-  }
-
-
-  async function update_card(this: any, msg: any) {
-    let ent: any = msg.ent
-    let [cardId, field, value]: [string, string, string] = ent.id.split('/')
-    let res = await trello.updateCard(cardId,
-      field,
-      value)
-
-    if (res.id) {
-      res.id = cardId
-      ent = this.make$(ZONE_BASE + 'card').data$(res)
-    }
-
-    return ent
-  }
-  */
-
 }
 
 

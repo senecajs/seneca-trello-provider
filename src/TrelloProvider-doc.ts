@@ -1,10 +1,10 @@
-/* Copyright © 2021 Seneca Project Contributors, MIT License. */
+/* Copyright © 2022 Seneca Project Contributors, MIT License. */
 
 
 const docs = {
 
   get_info: {
-    desc: 'Get information about the card.',
+    desc: 'Get information about the Trello SDK.',
   },
 
 }
