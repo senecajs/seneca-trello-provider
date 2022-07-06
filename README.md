@@ -7,6 +7,11 @@ Provides access to the Trello API using the Seneca *provider*
 convention. Trello API entities are represented as Seneca entities so
 that they can be accessed using the Seneca entity API and messages.
 
+See (seneca-entity)[senecajs/seneca-entity] and the (Seneca Data
+Entities
+Tutorial)[https://senecajs.org/docs/tutorials/understanding-data-entities.html] for more details on the Seneca entity API.
+
+NOTE: underlying third party SDK needs to be replaced as out of date and has a security issue.
 
 [![npm version](https://img.shields.io/npm/v/@seneca/trello-provider.svg)](https://npmjs.com/package/@seneca/trello-provider)
 [![build](https://github.com/senecajs/seneca-trello-provider/actions/workflows/build.yml/badge.svg)](https://github.com/senecajs/seneca-trello-provider/actions/workflows/build.yml)
@@ -28,35 +33,41 @@ that they can be accessed using the Seneca entity API and messages.
 // Setup - get the key value (<SECRET>) separately from a vault or
 // environment variable.
 Seneca()
+  // Get API keys using the seneca-env plugin
+  .use('env', {
+    var: {
+      $TRELLO_APIKEY: String,
+      $TRELLO_USERTOKEN: String,
+    }
+  })
   .use('provider', {
     provider: {
       trello: {
         keys: {
-          api: {
-            value: '<SECRET>'
-          },
+          apikey: { value: '$TRELLO_APIKEY' },
+          usertoken: { value: '$TRELLO_USERTOKEN' },
         }
       }
     }
   })
   .use('trello-provider')
 
-let repo = await seneca.entity('provider/trello/repo')
-  .load$('senecajs/trello-api-test')
+let board = await seneca.entity('provider/trello/board')
+  .load$('<trello-board-id>')
 
-Console.log('REPO DATA', repo)
+Console.log('BOARD', board)
 
-repo.description = 'New description'
-repo = await repo.save$()
+board.desc = 'New description'
+board = await board.save$()
 
-Console.log('UPDATED DATA', repo)
+Console.log('UPDATED BOARD', board)
 
 ```
 
 ## Install
 
 ```sh
-$ npm install @seneca/trello-provider
+$ npm install @seneca/trello-provider @seneca/env
 ```
 
 

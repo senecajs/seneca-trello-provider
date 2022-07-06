@@ -1,3 +1,4 @@
 module.exports = {
-  TRELLO_API_KEY: '<API-KEY>',
+  TRELLO_APIKEY: '<API-KEY>',
+  TRELLO_USERTOKEN: '<USER-TOKEN>',
 }

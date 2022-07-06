@@ -66,63 +66,7 @@ describe('trello-provider', () => {
     expect(board0u.desc).toEqual(board0r.desc)
 
   })
-
-
-  /*
-  test('card-load', async () => {
-    if (!Config) return;
-    const seneca = await makeSeneca()
-
-    let card = await seneca.entity('provider/trello/card')
-      .load$(Config.board0.id + "/" + Config.board0.card0.id)
-
-    expect(card).toBeDefined()
-    expect(card.id).toEqual(Config.board0.card0.id)
-    expect(card.entity$).toBe('provider/trello/card')
-  })
-  */
-
-  /*
-  test('entity-save', async () => {
-    if (!missingKeys) {
-      const provider_options = {
-        provider: {
-          trello: {
-            keys: {
-              api: {
-                value: CONFIG.key,
-              },
-              user: {
-                value: CONFIG.token
-              },
-            }
-          }
-        }
-      }
-  
-      const seneca = Seneca({ legacy: false })
-        .test()
-        .use('promisify')
-        .use('entity')
-        .use('provider', provider_options)
-        .use(TrelloProvider)
-  
-      const cardAndBoardId = CONFIG.boardId + "/" + CONFIG.cardId
-      let card = await seneca.entity('provider/trello/card')
-        .load$(cardAndBoardId)
-  
-      expect(card).toBeDefined()
-      card.desc = card.desc + 'M'
-  
-      card = await card.save$(CONFIG.cardId + `/desc/Teste`)
-      expect(card).toBeDefined()
-      expect(card.desc.endsWith('M')).toBeTruthy()
-    }
-  })
-  */
 })
-
-
 
 
 async function makeSeneca() {
