@@ -12,6 +12,10 @@ on:
 jobs:
   build:
     environment: test
+    env:
+      TRELLO_APIKEY: ${{secrets.TRELLO_APIKEY}}
+      TRELLO_USERTOKEN: ${{secrets.TRELLO_USERTOKEN}}
+      
     timeout-minutes: 6
 
     strategy:
