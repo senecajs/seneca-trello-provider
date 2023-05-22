@@ -5,6 +5,7 @@ import * as Fs from 'fs'
 
 
 const Seneca = require('seneca')
+const { Maintain } = require('@seneca/maintain')
 const SenecaMsgTest = require('seneca-msg-test')
 
 import TrelloProvider from '../src/trello-provider'
@@ -37,6 +38,7 @@ describe('trello-provider', () => {
       })
   })
 
+  test('maintain', Maintain)
 
   test('messages', async () => {
     const seneca = await makeSeneca()
