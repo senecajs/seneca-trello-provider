@@ -14,7 +14,7 @@
   "author": "Richard Rodger - richardrodger.com",
   "repository": {
     "type": "git",
-    "url": "git://trello.com/senecajs/seneca-trello-provider.git"
+    "url": "git://github.com/senecajs/seneca-trello-provider.git"
   },
   "scripts": {
     "test": "jest --coverage",
