@@ -50,7 +50,7 @@
     "@seneca/env": ">=0.2"
   },
   "devDependencies": {
-    "@seneca/doc": "^4.1.0",
+    "@seneca/doc": "^4.2.4",
     "@seneca/maintain": "0.0.28",
     "@types/jest": "^28.1.4",
     "@types/node": "^18.0.3",
