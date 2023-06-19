@@ -77,22 +77,7 @@ $ npm install @seneca/trello-provider @seneca/env
 
 ## Options
 
-* `debug` : boolean <i><small>false</small></i>
-
-
-Set plugin options when loading with:
-```js
-
-
-seneca.use('TrelloProvider', { name: value, ... })
-
-
-```
-
-
-<small>Note: <code>foo.bar</code> in the list above means 
-<code>{ foo: { bar: ... } }</code></small> 
-
+*None.*
 
 
 <!--END:options-->
@@ -102,9 +87,10 @@ seneca.use('TrelloProvider', { name: value, ... })
 
 ## Action Patterns
 
-* [role:entity,base:trello,cmd:load,name:repo,zone:provider](#-roleentitybasetrellocmdloadnamerepozoneprovider-)
-* [role:entity,base:trello,cmd:save,name:repo,zone:provider](#-roleentitybasetrellocmdsavenamerepozoneprovider-)
-* [sys:provider,get:info,provider:trello](#-sysprovidergetinfoprovidertrello-)
+* ["role":"entity","base":"trello","cmd":"list","name":"board","zone":"provider"](#-roleentitybasetrellocmdlistnameboardzoneprovider-)
+* ["role":"entity","base":"trello","cmd":"load","name":"board","zone":"provider"](#-roleentitybasetrellocmdloadnameboardzoneprovider-)
+* ["role":"entity","base":"trello","cmd":"save","name":"board","zone":"provider"](#-roleentitybasetrellocmdsavenameboardzoneprovider-)
+* ["sys":"provider","get":"info","provider":"trello"](#-sysprovidergetinfoprovidertrello-)
 
 
 <!--END:action-list-->
@@ -114,23 +100,30 @@ seneca.use('TrelloProvider', { name: value, ... })
 
 ## Action Descriptions
 
-### &laquo; `role:entity,base:trello,cmd:load,name:repo,zone:provider` &raquo;
+### &laquo; `"role":"entity","base":"trello","cmd":"list","name":"board","zone":"provider"` &raquo;
 
-Load Trello repository data into an entity.
-
-
-
-----------
-### &laquo; `role:entity,base:trello,cmd:save,name:repo,zone:provider` &raquo;
-
-Update Trello repository data from an entity.
+List Trello data into an entity
 
 
 
 ----------
-### &laquo; `sys:provider,get:info,provider:trello` &raquo;
+### &laquo; `"role":"entity","base":"trello","cmd":"load","name":"board","zone":"provider"` &raquo;
 
-Get information about the provider.
+Load Trello data into an entity
+
+
+
+----------
+### &laquo; `"role":"entity","base":"trello","cmd":"save","name":"board","zone":"provider"` &raquo;
+
+Save/Update Trello data into an entity
+
+
+
+----------
+### &laquo; `"sys":"provider","get":"info","provider":"trello"` &raquo;
+
+Get information about the Trello SDK.
 
 
 
