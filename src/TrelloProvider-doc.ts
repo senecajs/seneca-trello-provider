@@ -1,12 +1,12 @@
-/* Copyright © 2022 Seneca Project Contributors, MIT License. */
+/* Copyright © 2022-2023 Seneca Project Contributors, MIT License. */
 
 
 const docs = {
-
-  get_info: {
-    desc: 'Get information about the Trello SDK.',
+  messages: {
+    get_info: {
+      desc: 'Get information about the Trello SDK.',
+    },
   },
-
 }
 
 export default docs

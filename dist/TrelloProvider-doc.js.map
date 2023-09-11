@@ -1,0 +1,1 @@
+{"version":3,"file":"TrelloProvider-doc.js","sourceRoot":"","sources":["../src/TrelloProvider-doc.ts"],"names":[],"mappings":";AAAA,qEAAqE;;AAGrE,MAAM,IAAI,GAAG;IACX,QAAQ,EAAE;QACR,QAAQ,EAAE;YACR,IAAI,EAAE,uCAAuC;SAC9C;KACF;CACF,CAAA;AAED,kBAAe,IAAI,CAAA;AAEnB,IAAI,WAAW,KAAK,OAAO,CAAC,MAAM,CAAC,EAAE;IACnC,MAAM,CAAC,OAAO,GAAG,IAAI,CAAA;CACtB"}

@@ -1,4 +1,4 @@
-/* Copyright © 2022 Seneca Project Contributors, MIT License. */
+/* Copyright © 2022-2023 Seneca Project Contributors, MIT License. */
 
 const Pkg = require('../package.json')
 
