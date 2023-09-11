@@ -89,10 +89,14 @@ function TrelloProvider(_options) {
         }
     });
     seneca.prepare(async function () {
-        // TODO: define sys:provider,get:keys to get all the keys?
-        let apikey = await this.post('sys:provider,get:key,provider:trello,key:apikey');
-        let usertoken = await this.post('sys:provider,get:key,provider:trello,key:usertoken');
-        this.shared.sdk = new Trello(apikey.value, usertoken.value);
+        let seneca = this;
+        let res = await seneca.post('sys:provider,get:keymap,provider:trello');
+        if (!res.ok) {
+            this.fail('stytch-missing-keymap', res);
+        }
+        let apikey = res.keymap.apikey.value;
+        let usertoken = res.keymap.apikey.value;
+        this.shared.sdk = new Trello(apikey, usertoken);
     });
     return {
         exports: {

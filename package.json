@@ -1,6 +1,6 @@
 {
   "name": "@seneca/trello-provider",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "dist/trello-provider.js",
   "type": "commonjs",
   "types": "dist/trello-provider.d.ts",
@@ -14,7 +14,7 @@
   "author": "Richard Rodger - richardrodger.com",
   "repository": {
     "type": "git",
-    "url": "git://trello.com/senecajs/seneca-trello-provider.git"
+    "url": "git://github.com/senecajs/seneca-trello-provider.git"
   },
   "scripts": {
     "test": "jest --coverage",
@@ -54,6 +54,7 @@
     "@types/jest": "^29.5.4",
     "@types/node": "^20.6.0",
     "esbuild": "^0.19.2",
+    "@seneca/maintain": "0.0.28",
     "esbuild-jest": "^0.5.0",
     "jest": "^29.6.4",
     "seneca": ">=3",
