@@ -15,8 +15,10 @@
 
 ## Install
 
+Requires Seneca 4 and Node.js 24 or later.
+
 ```sh
-$ npm install @seneca/trello-provider @seneca/env
+$ npm install seneca@^4 @seneca/entity @seneca/provider @seneca/env @seneca/trello-provider
 ```
 
 
@@ -29,15 +31,16 @@ $ npm install @seneca/trello-provider @seneca/env
 
 // Setup - get the key value (<SECRET>) separately from a vault or
 // environment variable.
-Seneca()
-  // Get API keys using the seneca-env plugin
-  .use('env', {
+const seneca = Seneca()
+  .use('@seneca/entity')
+  // Get API keys using the @seneca/env plugin
+  .use('@seneca/env', {
     var: {
       $TRELLO_APIKEY: String,
       $TRELLO_USERTOKEN: String,
     }
   })
-  .use('provider', {
+  .use('@seneca/provider', {
     provider: {
       trello: {
         keys: {
@@ -47,17 +50,19 @@ Seneca()
       }
     }
   })
-  .use('trello-provider')
+  .use('@seneca/trello-provider')
+
+await seneca.ready()
 
 let board = await seneca.entity('provider/trello/board')
   .load$('<trello-board-id>')
 
-Console.log('BOARD', board)
+console.log('BOARD', board)
 
 board.desc = 'New description'
 board = await board.save$()
 
-Console.log('UPDATED BOARD', board)
+console.log('UPDATED BOARD', board)
 
 ```
 
